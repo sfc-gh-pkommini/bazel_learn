@@ -166,10 +166,8 @@ cython_debug/
 .vscode/
 bazel-bin
 bazel-out
-bazel-redteam
-bazel-monosphere
-bazel-testlogs
-.pnpm-store/
 bazel-bazel_learn
+.pnpm-store/
 MODULE.bazel
 MODULE.bazel.lock
+bazel-testlogs
