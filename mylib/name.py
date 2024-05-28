@@ -1,2 +1,2 @@
-def getName() -> str:
+def get_name() -> str:
     return "Bazel"
