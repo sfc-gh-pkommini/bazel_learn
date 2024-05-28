@@ -4,15 +4,27 @@ load("@pypi//:requirements.bzl", "requirement")
 
 py_pytest_main(name = "__test__")
 
+# py_test(
+#     name = "mylib_test",
+#     srcs = [
+#         "test.py",
+#         ":__test__",
+#     ],
+#     main = ":__test__.py",
+#     deps = [
+#         "//mylib:name",
+#         ":__test__",
+#         requirement("pytest"),
+#     ],
+# )
+
 py_test(
     name = "mylib_test",
     srcs = [
         "test.py",
-        ":__test__",
     ],
-    main = ":__test__.py",
     deps = [
-        ":__test__",
+        "//mylib:name",
         requirement("pytest"),
     ],
 )
