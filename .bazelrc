@@ -1,4 +1,0 @@
-# aspect_rules_python requires us to provide an exact interpreter version in Bazel 6.x.
-build --@aspect_rules_py//py:interpreter_version=3.10.14
-fetch --@aspect_rules_py//py:interpreter_version=3.10.14
-query --@aspect_rules_py//py:interpreter_version=3.10.14
