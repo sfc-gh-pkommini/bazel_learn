@@ -1,6 +1,14 @@
 # bazel_learn
 
-Repo for learning bazel with python
+Repo for learning bazel with python.
+
+## Build dependencies
+
+This step creates a `requirements-lock.txt`
+
+```bash
+bazel run requirements.update
+```
 
 ## Run `main`
 
@@ -11,7 +19,7 @@ bazel run //:main
 ## Run test
 
 ```bash
-bazel test //...
+bazel test //src:test
 ```
 
 ## Run coverage (Writes nothing)
