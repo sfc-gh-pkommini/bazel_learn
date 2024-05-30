@@ -8,7 +8,6 @@ compile_pip_requirements(
     requirements_txt = "//:requirements-lock.txt",
 )
 
-
 py_binary(
     name = "main",
     srcs = ["main.py"],
