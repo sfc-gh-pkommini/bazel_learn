@@ -18,5 +18,6 @@ py_test(
     deps = [
         ":name",
         requirement("pytest"),
+        requirement("requests"),
     ],
 )
