@@ -1,9 +1,9 @@
-coverage --test_env=VERBOSE_COVERAGE=true
-coverage --test_env=RULES_PYTHON_BOOTSTRAP_VERBOSE=true
-coverage --action_env=VERBOSE_COVERAGE=true,
-coverage --sandbox_debug
-coverage --test_output=streamed
-coverage --verbose_failures
-coverage --instrument_test_targets=true
-coverage --instrumentation_filter="//src/test"
-coverage --combined_report=lcov
+# coverage --test_env=VERBOSE_COVERAGE=true
+# coverage --test_env=RULES_PYTHON_BOOTSTRAP_VERBOSE=true
+# coverage --action_env=VERBOSE_COVERAGE=true,
+# coverage --sandbox_debug
+# coverage --test_output=streamed
+# coverage --verbose_failures
+# coverage --instrument_test_targets=true
+# coverage --instrumentation_filter="//src[/:]"
+# coverage --combined_report=lcov

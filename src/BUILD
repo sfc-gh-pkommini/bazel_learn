@@ -1,23 +1,29 @@
-load("@rules_python//python:defs.bzl", "py_library", "py_test")
+load("@rules_python//python:defs.bzl", "py_binary", "py_test", "py_library")
 load("@pip_deps//:requirements.bzl", "requirement")
 
 py_library(
     name = "name",
-    srcs = ["name.py"],
-    visibility = ["//visibility:public"],
+    srcs = [
+      "name.py",
+    ],
     deps = [
-        requirement("requests"),
-    ]
+      requirement("requests"),
+    ],
+)
+
+py_binary(
+  name = "main",
+  srcs = [
+    "main.py",
+  ],
+  main = "main.py",
+  deps = [
+    ":name",
+  ],
 )
 
 py_test(
-    name = "test",
-    srcs = [
-        "test.py",
-    ],
-    deps = [
-        ":name",
-        requirement("pytest"),
-        requirement("requests"),
-    ],
+    name = "name_test",
+    srcs = ["name_test.py"],
+    deps = [":name"],
 )
