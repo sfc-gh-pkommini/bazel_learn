@@ -7,22 +7,22 @@ Repo for learning bazel with python.
 This step creates a `requirements-lock.txt`
 
 ```bash
-bazel run requirements.update
+bazel run //py:requirements.update
 ```
 
 ## Run `main`
 
 ```bash
-bazel run //:main
+bazel run //src:main
 ```
 
 ## Run test
 
 ```bash
-bazel test //src:test
+bazel test //src:name_test
 ```
 
-## Run coverage (Writes nothing)
+## Run coverage
 
 ```bash
 bazel coverage --combined_report=lcov //...
