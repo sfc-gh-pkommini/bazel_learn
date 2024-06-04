@@ -171,3 +171,4 @@ bazel-bazel_learn
 MODULE.bazel
 MODULE.bazel.lock
 bazel-testlogs
+genhtml
