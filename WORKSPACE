@@ -1,45 +1,41 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
+
 http_archive(
-    name = "rules_python",
-    sha256 = "4912ced70dc1a2a8e4b86cec233b192ca053e82bc72d877b98e126156e8f228d",
-    strip_prefix = "rules_python-0.32.2",
-    url = "https://github.com/bazelbuild/rules_python/releases/download/0.32.2/rules_python-0.32.2.tar.gz",
+    name = "aspect_rules_py",
+    sha256 = "959b433fa19238d3d3644be2960c606cea27b83a9ea8a0f1f7bd6d3be4fc53e9",
+    strip_prefix = "rules_py-0.7.2",
+    url = "https://github.com/aspect-build/rules_py/releases/download/v0.7.2/rules_py-v0.7.2.tar.gz",
 )
 
-load("@rules_python//python:repositories.bzl", "py_repositories", "python_register_multi_toolchains")
+load("@aspect_rules_py//py:repositories.bzl", "rules_py_dependencies")
 
-py_repositories()
+rules_py_dependencies()
 
-default_python_version = "3.11"
+load("@aspect_rules_py//py:toolchains.bzl", "rules_py_toolchains")
 
-python_register_multi_toolchains(
-    name = "python",
-    default_version = default_python_version,
-    python_versions = [
-        "3.11",
-        "3.10",
-    ],
+rules_py_toolchains()
+
+
+load("@rules_python//python:repositories.bzl", "py_repositories", "python_register_toolchains")
+
+python_register_toolchains(
+    name = "python_3_10",
+    python_version = "3.10",
     register_coverage_tool = True,
 )
 
-load("@python//:pip.bzl", "multi_pip_parse")
-load("@python//3.11:defs.bzl", interpreter_3_11 = "interpreter")
-load("@python//3.10:defs.bzl", interpreter_3_10 = "interpreter")
+py_repositories()
 
-multi_pip_parse(
+load("@python_3_10//:defs.bzl", "interpreter")
+load("@rules_python//python:pip.bzl", "pip_parse")
+
+pip_parse(
     name = "pip_deps",
-    default_version = default_python_version,
-    python_interpreter_target = {
-        "3.11": interpreter_3_11,
-        "3.10": interpreter_3_10,
-    },
-    requirements_lock = {
-        "3.11": "//py:requirements-lock.txt",
-        "3.10": "//py:requirements-lock.txt",
-    },
+    python_interpreter_target = interpreter,
+    requirements_lock = "//py:requirements-lock.txt",
 )
 
-load("@pip_deps//:requirements.bzl", install_deps = "install_deps")
+load("@pip_deps//:requirements.bzl", install_pypi_deps = "install_deps")
 
-install_deps()
+install_pypi_deps()
