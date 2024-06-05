@@ -1,7 +1,10 @@
-coverage --test_env=VERBOSE_COVERAGE=true
-coverage --test_env=RULES_PYTHON_BOOTSTRAP_VERBOSE=true
-coverage --action_env=VERBOSE_COVERAGE=true,
-coverage --sandbox_debug
-coverage --test_output=streamed
-coverage --verbose_failures
-coverage --instrument_test_targets=true
+build --@aspect_rules_py//py:interpreter_version=3.10.14
+fetch --@aspect_rules_py//py:interpreter_version=3.10.14
+query --@aspect_rules_py//py:interpreter_version=3.10.14
+# coverage --test_env=VERBOSE_COVERAGE=true
+# coverage --test_env=RULES_PYTHON_BOOTSTRAP_VERBOSE=true
+# coverage --action_env=VERBOSE_COVERAGE=true,
+# coverage --sandbox_debug
+# coverage --test_output=streamed
+# coverage --verbose_failures
+# coverage --instrument_test_targets=true
